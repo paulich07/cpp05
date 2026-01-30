@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:29:21 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:43:39 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 #include <iostream>
 #include <string>
+
+# define GREEN   	"\033[0;32m"
+# define YELLOW  	"\033[0;33m"
+# define BLUE    	"\033[0;34m"
+# define MAGENTA 	"\033[0;35m"
+# define RESET   	"\033[0m"
 
 class Bureaucrat
 {
@@ -36,12 +42,12 @@ class Bureaucrat
         class GradeTooHighException : public std::exception
         {
                 public:
-                        const char* what() const noexcept override;
+                        virtual const char* what() const throw();
         };
         class GradeTooLowException : public std::exception
         {
                 public:
-                        const char* what() const noexcept override;
+                        virtual const char* what() const throw();
         };
 };
 
