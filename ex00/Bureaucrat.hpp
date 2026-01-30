@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:21:45 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:29:21 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,6 @@
 
 #include <iostream>
 #include <string>
-
-//  Bureaucrat::G radeTooHighException or a Bureaucrat::GradeTooLowException.
-// use try catch
-
-// try
-// {
-// /* do some stuff with bureaucrats */
-// }
-// catch (std::exception & e)
-// {
-// /* handle exception */
-// }
 
 class Bureaucrat
 {
@@ -42,12 +30,8 @@ class Bureaucrat
         const std::string &getName() const;
         int getGrade() const;
 
-// attenzione 1 e' il piu' alto, quindi se aumento il grado devo fare --
-        void incrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
-// constructor.
-
-        void decrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
-// constructor.
+        void incrementGrade(); // throw the same exceptions as the constructor
+        void decrementGrade(); // throw the same exceptions as the constructor
 
         class GradeTooHighException : public std::exception
         {

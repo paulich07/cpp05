@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:07:38 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:22:07 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:29:29 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
     if (this != &other)
     {
-        // this->name = other.name; // const
+        // this->name = other.name; // const non modificabile
         this->grade = other.grade;
     }
     return *this;
@@ -75,7 +75,18 @@ void Bureaucrat::decrementGrade()
     grade++;
 }
 
+const char* Bureaucrat::GradeTooHighException::what() const noexcept
+{
+    return "Grade is too high!";
+}
 
+const char* Bureaucrat::GradeTooLowException::what() const noexcept
+{
+    return "Grade is too low!";
+}
 
-// overload insertion << 
-// OUTPUT LIKE THIS <name>, bureaucrat grade <grade>
+std::ostream &operator<<(std::ostream &stream, Bureaucrat const &bureaucrat)
+{
+    stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade();
+    return stream;
+}
