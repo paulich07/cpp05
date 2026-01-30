@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/29 22:14:20 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:19:43 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,36 @@ class Bureaucrat
 {
     private:
         const std::string name;
-        unsigned int grade; // from 0 to 100
+        int grade; // from 0 to 100
     public:
-        getName();
-        getGrade();
+        Bureaucrat();
+        Bureaucrat(std::string name, int grade);
+        Bureaucrat(const Bureaucrat & other);
+        ~Bureaucrat();
+        Bureaucrat & operator=(const Bureaucrat & other);
+        std::string getName() const;
+        int getGrade() const;
 
 // attenzione 1 e' il piu' alto, quindi se aumento il grado devo fare --
-        incrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
+        void incrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
 // constructor.
 
-        decrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
+        void decrementGrade(); // If the grade goes out of range, both functions must throw the same exceptions as the
 // constructor.
-        // overload insertion << 
-        // OUTPUT LIKE THIS <name>, bureaucrat grade <grade>
 
+        class GradeTooHighException : public std::exception
+        {
+                public:
+                        const char* what() const noexcept override;
+        };
+        class GradeTooLowException : public std::exception
+        {
+                public:
+                        const char* what() const noexcept override;
+        };
 };
+
+// globale perche' usa streams
+std::ostream &operator<<(std::ostream &stream, Bureaucrat const &bureaucrat);
 
 #endif
