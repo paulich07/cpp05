@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:07:38 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:19:47 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:22:07 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
     return *this;
 }
 
-std::string Bureaucrat::getName() const
+const std::string &Bureaucrat::getName() const
 {
     return name;
 }
@@ -74,6 +74,7 @@ void Bureaucrat::decrementGrade()
     }
     grade++;
 }
+
 
 
 // overload insertion << 

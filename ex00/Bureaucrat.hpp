@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:19:43 by plichota         ###   ########.fr       */
+/*   Updated: 2026/01/30 21:21:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat
         Bureaucrat(const Bureaucrat & other);
         ~Bureaucrat();
         Bureaucrat & operator=(const Bureaucrat & other);
-        std::string getName() const;
+        const std::string &getName() const;
         int getGrade() const;
 
 // attenzione 1 e' il piu' alto, quindi se aumento il grado devo fare --
