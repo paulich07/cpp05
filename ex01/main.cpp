@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 23:35:33 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 23:36:14 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main()
         form3.beSigned(bureaucrat1);
         form3 = form1;
         std::cout << form1 << std::endl;
-        std::cout << form3 << std::esndl;
+        std::cout << form3 << std::endl;
     }
     {
         std::cout << YELLOW << "---- Exception test: create form ----" << RESET << std::endl;
