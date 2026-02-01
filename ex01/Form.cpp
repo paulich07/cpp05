@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 20:05:38 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 22:35:38 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 23:35:24 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,20 @@ bool Form::getIsSigned() const
 
 void Form::beSigned(const Bureaucrat &bureaucrat)
 {
-    if (bureaucrat.getGrade() <= gradeToSign)
-        isSigned = true;
-    else
+    if (bureaucrat.getGrade() > gradeToSign)
         throw Form::GradeTooLowException();
+    else
+        isSigned = true;
 }
 
-void Form::signForm(const Bureaucrat &bureaucrat)
+const char * Form::GradeTooLowException::what() const throw()
 {
-    try
-    {
-        beSigned(bureaucrat);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    return "Grade is too low!";
+}
+
+const char * Form::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high!";
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &form)

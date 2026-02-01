@@ -6,15 +6,17 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:19:05 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 22:35:41 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:58:29 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include <string>
 #include "Bureaucrat.hpp"
+
+#include <string>
+#include <iostream>
 
 class Form
 {
@@ -23,6 +25,7 @@ class Form
         bool isSigned; // always 0 at construction
         const int gradeToSign;
         const int gradeToExecute;
+
     public:
         Form();
         Form(std::string name, int gradeToSign, int gradeToExecute);
@@ -37,8 +40,6 @@ class Form
 
         // changes the form's status to signed if the bureaucrat's grade is high enough
         void beSigned(const Bureaucrat &bureaucrat); // Form::GradeTooLowException
-        // call Form:beSigned to attempt sign the form, print if succeed
-        void signForm(const Bureaucrat &bureaucrat);
 
         class GradeTooLowException : public std::exception
         {

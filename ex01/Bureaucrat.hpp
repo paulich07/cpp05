@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:43:39 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 23:24:52 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define BLUE    	"\033[0;34m"
 # define MAGENTA 	"\033[0;35m"
 # define RESET   	"\033[0m"
+
+class Form; // forward declaration
 
 class Bureaucrat
 {
@@ -38,6 +40,9 @@ class Bureaucrat
 
         void incrementGrade(); // throw the same exceptions as the constructor
         void decrementGrade(); // throw the same exceptions as the constructor
+
+        // call Form::beSigned to attempt sign the form, print if succeed
+        void signForm(Form &form);
 
         class GradeTooHighException : public std::exception
         {
