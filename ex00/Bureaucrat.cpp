@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:07:38 by plichota          #+#    #+#             */
-/*   Updated: 2026/01/30 21:41:19 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:22:38 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
     this->grade = grade;
 }
 
+// non uso copy operator perche' name e' const
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade)
 {
 }

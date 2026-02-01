@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:19:05 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 20:05:08 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/01 22:35:41 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Form
         Form &operator=(const Form & other);
         ~Form();
 
-        std::string getName() const;
+        const std::string &getName() const;
         int getGradeToSign() const;
         int getGradeToExecute() const;
         bool getIsSigned() const;
