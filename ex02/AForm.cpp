@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:45:18 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 17:02:31 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:23:29 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,14 @@ std::ostream &operator<<(std::ostream &out, const AForm &AForm)
         << ", gradeToSign: " << AForm.getGradeToSign()
         << ", gradeToExecute: " << AForm.getGradeToExecute();
     return out;
+}
+
+void AForm::execute(Bureaucrat const &executor) const
+{
+    if (this->getIsSigned() == false)
+        throw AForm::FormNotSignedException();
+    else if (executor.getGrade() > this->getGradeToExecute())
+        throw Bureaucrat::GradeTooLowException();
+        // throw AForm::GradeTooLowException();
+    executeAction();
 }

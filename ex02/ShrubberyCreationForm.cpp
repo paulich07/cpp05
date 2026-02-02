@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:51:12 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 17:03:00 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:24:08 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,8 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return *this;
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void ShrubberyCreationForm::executeAction() const
 {
-    (void) executor;
-    if (this->getIsSigned() == false)
-        throw AForm::FormNotSignedException();
-    else if (executor.getGrade() > this->getGradeToExecute())
-        throw Bureaucrat::GradeTooLowException();
-        // throw AForm::GradeTooLowException();
-
     std::ofstream file((target + "_shrubbery").c_str());
     if (!file.is_open())
         throw std::runtime_error("Could not open file");
