@@ -6,31 +6,31 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 22:18:45 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:25:56 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
-
+#include "PresidentialPardonForm.hpp"
 
 #include <iostream>
 #include <string>
 
 int main()
 {
-    Bureaucrat bureaucrat1("John", 1);
-    Bureaucrat bureaucrat2("Cena", 100);
-    Bureaucrat bureaucrat3("bureaucrat3", 150);
+    Bureaucrat bureaucrat1("President", 1);
+    Bureaucrat bureaucrat2("John Cena", 100);
+    Bureaucrat bureaucrat3("dummy bureaucrat", 150);
 
     ShrubberyCreationForm form1("form1");
     ShrubberyCreationForm signedForm("signedForm");
     bureaucrat1.signForm(signedForm);
 
     RobotomyRequestForm roboform("roboform");
-    RobotomyRequestForm roboformSigned("roboformSigned");
-    bureaucrat1.signForm(roboformSigned);
+    
+    PresidentialPardonForm pardonForm("pardonForm");
     
     // non si puo'
     // AForm form1("form1", 50, 50);
@@ -130,5 +130,15 @@ int main()
         bureaucrat1.executeForm(roboform);
         bureaucrat1.signForm(roboform);
         bureaucrat1.executeForm(roboform);
+    }
+    {
+        std::cout << YELLOW << "---- Pardon form execution: success ----" << RESET << std::endl;
+        std::cout << pardonForm << std::endl;
+        
+        bureaucrat2.executeForm(pardonForm);
+        bureaucrat2.signForm(pardonForm);
+        bureaucrat1.executeForm(pardonForm);
+        bureaucrat1.signForm(pardonForm);
+        bureaucrat1.executeForm(pardonForm);
     }
 }
