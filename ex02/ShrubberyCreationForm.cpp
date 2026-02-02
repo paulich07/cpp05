@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:51:12 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 16:43:53 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:54:19 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    else if (this->getIsSigned() == false)
+    if (this->getIsSigned() == false)
         throw AForm::FormNotSignedException();
+    else if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
     else
     {
         std::ofstream file((target + "_shrubbery").c_str());
@@ -68,5 +68,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         if (file.fail())
             throw std::runtime_error("Error writing to file");
         // file.close(); nel destructor di ofstream
+        std::cout << GREEN << "ShrubberyCreationForm: File '" << target + "_shrubbery' created" << RESET << std::endl;
     }
 }

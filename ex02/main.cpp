@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 16:38:35 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:53:44 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,23 @@ int main()
     }
     {
         std::cout << YELLOW << "---- Shrubbery form execution ----" << RESET << std::endl;
+        std::cout << form1 << std::endl;
+        bureaucrat1.signForm(form1);
         try
         {
-            form1.execute(bureaucrat3); // exception
+            form1.execute(bureaucrat3);
         }
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
         }
-        form1.execute(bureaucrat2);
+        try
+        {
+            form1.execute(bureaucrat2);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
     }
 }
