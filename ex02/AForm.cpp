@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:45:18 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 23:45:39 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:43:36 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ const char * AForm::GradeTooLowException::what() const throw()
 const char * AForm::GradeTooHighException::what() const throw()
 {
     return "Grade is too high!";
+}
+
+const char * AForm::FormNotSignedException::what() const throw()
+{
+    return "Form is not signed!";
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &AForm)

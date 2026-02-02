@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 19:19:05 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 23:45:38 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:43:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ class AForm
         {
             public:
                 virtual const char * what() const throw();
+        };
+        class FormNotSignedException : public std::exception
+        {
+                public:
+                    virtual const char* what() const throw();
         };
 };
 
