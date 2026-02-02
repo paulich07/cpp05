@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 22:28:39 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 22:30:27 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:58:08 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define INTERN_HPP
 
 #include "AForm.hpp"
+#include <iostream>
 
 class Intern
 {
