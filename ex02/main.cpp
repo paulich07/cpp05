@@ -6,12 +6,14 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 17:28:23 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 22:18:45 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
 
 #include <iostream>
 #include <string>
@@ -25,10 +27,13 @@ int main()
     ShrubberyCreationForm form1("form1");
     ShrubberyCreationForm signedForm("signedForm");
     bureaucrat1.signForm(signedForm);
+
+    RobotomyRequestForm roboform("roboform");
+    RobotomyRequestForm roboformSigned("roboformSigned");
+    bureaucrat1.signForm(roboformSigned);
     
     // non si puo'
     // AForm form1("form1", 50, 50);
-
     {
         std::cout << YELLOW << "---- Shrubbery form creation ----" << RESET << std::endl;
         std::cout << form1 << std::endl;
@@ -95,5 +100,35 @@ int main()
         std::cout << form1 << std::endl;
         bureaucrat3.executeForm(form1);
         bureaucrat2.executeForm(form1);
+    }
+    {
+        std::cout << YELLOW << "---- Shrubbery form execution: success ----" << RESET << std::endl;
+        std::cout << form1 << std::endl;
+        try
+        {
+            form1.execute(bureaucrat2);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        bureaucrat1.signForm(form1);
+        form1.execute(bureaucrat2);
+    }
+    {
+        std::cout << YELLOW << "---- Shrubbery bureaucrat execution ----" << RESET << std::endl;
+        std::cout << form1 << std::endl;
+        bureaucrat3.executeForm(form1);
+        bureaucrat2.executeForm(form1);
+    }
+    {
+        std::cout << YELLOW << "---- Robotomy form execution: success ----" << RESET << std::endl;
+        std::cout << roboform << std::endl;
+        
+        bureaucrat2.executeForm(roboform);
+        bureaucrat2.signForm(roboform);
+        bureaucrat1.executeForm(roboform);
+        bureaucrat1.signForm(roboform);
+        bureaucrat1.executeForm(roboform);
     }
 }

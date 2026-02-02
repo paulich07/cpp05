@@ -6,7 +6,8 @@ CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 SRC = main.cpp \
 	  Bureaucrat.cpp \
 	  AForm.cpp \
-	  ShrubberyCreationForm.cpp
+	  ShrubberyCreationForm.cpp \
+	  RobotomyRequestForm.cpp
 
 all: $(NAME)
 
@@ -17,8 +18,8 @@ $(NAME): $(SRC)
 clean:
 
 fclean: clean
-	rm -rf $(NAME)
-	find . -maxdepth 1 -type f -name "*_*" ! -name "*.*" -delete
+	@rm -rf $(NAME)
+	@find . -maxdepth 1 -type f -name "*_*" ! -name "*.*" -delete
 
 re: fclean all
 
