@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 22:10:23 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 16:42:58 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 16:57:29 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Bureaucrat
 
         // call Form::beSigned to attempt sign the form, print if succeed
         void signForm(AForm &form);
+        void executeForm(AForm const &form);
 
         class GradeTooHighException : public std::exception
         {

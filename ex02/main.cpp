@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 16:53:44 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:14:15 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int main()
     Bureaucrat bureaucrat3("bureaucrat3", 150);
 
     ShrubberyCreationForm form1("form1");
+    ShrubberyCreationForm signedForm("signedForm");
+    bureaucrat1.signForm(signedForm);
     
     // non si puo'
     // AForm form1("form1", 50, 50);
@@ -40,17 +42,43 @@ int main()
         std::cout << form2 << std::endl;
     }
     {
-        std::cout << YELLOW << "---- Shrubbery form execution ----" << RESET << std::endl;
+        std::cout << YELLOW << "---- Shrubbery form execution: not signed ----" << RESET << std::endl;
         std::cout << form1 << std::endl;
-        bureaucrat1.signForm(form1);
+        ShrubberyCreationForm form(form1);
         try
         {
-            form1.execute(bureaucrat3);
+            form.execute(bureaucrat2);
         }
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
         }
+        bureaucrat1.signForm(form);
+        try
+        {
+            form.execute(bureaucrat2);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
+    {
+        std::cout << YELLOW << "---- Shrubbery form execution: low grade ----" << RESET << std::endl;
+        std::cout << signedForm << std::endl;
+        try
+        {
+            signedForm.execute(bureaucrat3);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+        signedForm.execute(bureaucrat2);
+    }
+    {
+        std::cout << YELLOW << "---- Shrubbery form execution: success ----" << RESET << std::endl;
+        std::cout << form1 << std::endl;
         try
         {
             form1.execute(bureaucrat2);
@@ -59,5 +87,7 @@ int main()
         {
             std::cerr << e.what() << '\n';
         }
+        bureaucrat1.signForm(form1);
+        form1.execute(bureaucrat2);
     }
 }

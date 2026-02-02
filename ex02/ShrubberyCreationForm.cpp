@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:51:12 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 16:54:19 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:03:00 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,27 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+    (void) executor;
     if (this->getIsSigned() == false)
         throw AForm::FormNotSignedException();
     else if (executor.getGrade() > this->getGradeToExecute())
-        throw AForm::GradeTooLowException();
-    else
-    {
-        std::ofstream file((target + "_shrubbery").c_str());
-        if (!file.is_open())
-            throw std::runtime_error("Could not open file");
+        throw Bureaucrat::GradeTooLowException();
+        // throw AForm::GradeTooLowException();
 
-        for (size_t i = 0; i < 3; i++)
-        {
-            file << "    /\\   " << std::endl;
-            file << "   /__\\  " << std::endl;
-            file << "  /____\\ " << std::endl;
-            file << "    ||    " << std::endl << std::endl;
-        }
-        
-        if (file.fail())
-            throw std::runtime_error("Error writing to file");
-        // file.close(); nel destructor di ofstream
-        std::cout << GREEN << "ShrubberyCreationForm: File '" << target + "_shrubbery' created" << RESET << std::endl;
+    std::ofstream file((target + "_shrubbery").c_str());
+    if (!file.is_open())
+        throw std::runtime_error("Could not open file");
+
+    for (size_t i = 0; i < 3; i++)
+    {
+        file << "    /\\   " << std::endl;
+        file << "   /__\\  " << std::endl;
+        file << "  /____\\ " << std::endl;
+        file << "    ||    " << std::endl << std::endl;
     }
+    
+    if (file.fail())
+        throw std::runtime_error("Error writing to file");
+    // file.close(); nel destructor di ofstream
+    std::cout << GREEN << "ShrubberyCreationForm: File '" << target + "_shrubbery' created" << RESET << std::endl;
 }

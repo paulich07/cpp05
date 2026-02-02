@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 19:07:38 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 14:08:02 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:02:13 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,19 @@ void Bureaucrat::signForm(AForm &form)
     {
         std::cerr << MAGENTA << this->getName() << " couldn't sign " << form.getName()
             << " because " << e.what() << RESET <<std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << GREEN << this->getName() << " executed " << form.getName() << RESET << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
 }
 
