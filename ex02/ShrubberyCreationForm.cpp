@@ -6,11 +6,12 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:51:12 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 23:53:54 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 13:58:39 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default")
 {
@@ -46,6 +47,24 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-    // Creates a file <target>_shrubbery in the working directory and writes ASCII trees
-// inside it
+    if (executor.getGrade() > this->getGradeToExecute())
+        throw AForm::GradeTooLowException();
+    else
+    {
+        std::ofstream file((target + "_shrubbery").c_str());
+        if (!file.is_open())
+            throw std::runtime_error("Could not open file");
+
+        for (size_t i = 0; i < 3; i++)
+        {
+            file << "    /\\   " << std::endl;
+            file << "   /__\\  " << std::endl;
+            file << "  /____\\ " << std::endl;
+            file << "    ||    " << std::endl << std::endl;
+        }
+        
+        if (file.fail())
+            throw std::runtime_error("Error writing to file");
+        // file.close(); nel destructor di ofstream
+    }
 }

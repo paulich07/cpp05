@@ -5,7 +5,8 @@ CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRC = main.cpp \
 	  Bureaucrat.cpp \
-	  AForm.cpp
+	  AForm.cpp \
+	  ShrubberyCreationForm.cpp
 
 all: $(NAME)
 

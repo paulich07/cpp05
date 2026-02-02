@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:46:24 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/01 23:53:27 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 13:46:09 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class ShrubberyCreationForm : public AForm
         std::string target;
     public:
         ShrubberyCreationForm(); // sign 145, exec 137
-        ShrubberyCreationForm(std::string target); // ex home
+        ShrubberyCreationForm(std::string target);
         ShrubberyCreationForm(const ShrubberyCreationForm & other);
         ShrubberyCreationForm &operator=(const ShrubberyCreationForm & other);
         ~ShrubberyCreationForm();
