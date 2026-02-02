@@ -18,6 +18,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	find . -maxdepth 1 -type f -executable ! -name "*.*" -delete
 
 re: fclean all
 
