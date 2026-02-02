@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 21:09:08 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 17:14:15 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:28:23 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,11 @@ int main()
         }
         bureaucrat1.signForm(form1);
         form1.execute(bureaucrat2);
+    }
+    {
+        std::cout << YELLOW << "---- Shrubbery bureaucrat execution ----" << RESET << std::endl;
+        std::cout << form1 << std::endl;
+        bureaucrat3.executeForm(form1);
+        bureaucrat2.executeForm(form1);
     }
 }

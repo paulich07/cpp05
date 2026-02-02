@@ -6,7 +6,7 @@
 /*   By: plichota <plichota@student.42firenze.it    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:51:12 by plichota          #+#    #+#             */
-/*   Updated: 2026/02/02 17:24:08 by plichota         ###   ########.fr       */
+/*   Updated: 2026/02/02 17:25:55 by plichota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void ShrubberyCreationForm::executeAction() const
         file << "  /____\\ " << std::endl;
         file << "    ||    " << std::endl << std::endl;
     }
-    
     if (file.fail())
         throw std::runtime_error("Error writing to file");
     // file.close(); nel destructor di ofstream
